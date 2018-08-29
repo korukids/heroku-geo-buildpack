@@ -11,7 +11,7 @@ set -e
 unset GIT_DIR
 
 # Configuration
-S3_BUCKET=${HEROKU_GEO_BUILDBACK_S3_BUCKET:-"cyberdelia-geo-buildpack"}
+S3_BUCKET=${HEROKU_GEO_BUILDBACK_S3_BUCKET:-"korukids-heroku-deployment"}
 
 # Parameters
 BUILD_DIR=$1
@@ -31,7 +31,7 @@ function indent() {
 }
 
 function manifest_version() {
-  curl "http://${S3_BUCKET}.s3.amazonaws.com/${STACK}/manifest.${1}" -s -o - | head -n 1
+  curl "https://s3.eu-west-2.amazonaws.com/${S3_BUCKET}/${STACK}/manifest.${1}" -s -o - | head -n 1
 }
 
 function download_package() {
@@ -40,7 +40,7 @@ function download_package() {
   location="$3"
 
   mkdir -p $location
-  package="https://${S3_BUCKET}.s3.amazonaws.com/${STACK}/$name-$version.tgz"
+  package="https://s3.eu-west-2.amazonaws.com/${S3_BUCKET}/${STACK}/$name-$version.tgz"
   curl $package -s -o - | tar xzf - -C $location
 }
 
