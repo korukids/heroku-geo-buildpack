@@ -1,3 +1,5 @@
+**NOTE: This repository is no longer supported or updated by Koru Kids. See [heroku-buildpack-apt](https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-apt) instead.**
+
 Heroku buildpack: geo
 =====================
 
